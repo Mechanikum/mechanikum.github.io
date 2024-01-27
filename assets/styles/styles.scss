@@ -1,0 +1,120 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+$background: #19140F;
+$font: #C2AC8F;
+
+@mixin headerBlockMixin {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #C2AC8F;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), #19140F;
+  p {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  a {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+  .deco {
+    position: relative;
+  }
+}
+
+//Adds ripple effect to buttons
+@mixin rippleMixin($red,$green,$blue) {
+  transition: background 0.5s ease-in-out;
+  &:hover {
+    background: rgba($red,$green,$blue, 0) radial-gradient(circle, rgba($red,$green,$blue, 0.1) 1%, transparent 1%) center/15000%;
+  }
+  &:active {
+    background-color: rgba($red,$green,$blue, 0.25);
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+
+body {
+  background: $background;
+  color: $font;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  padding: 8px 16px;
+  @include headerBlockMixin;
+  a:hover {
+    text-decoration: underline;
+  }
+  .deco {
+    margin: -8px -16px;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  padding: 16px 16px;
+  box-sizing: border-box;
+  @include headerBlockMixin;
+}
+
+.badge {
+  display: flex;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: currentColor;
+  color: $font;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  cursor: pointer;
+  user-select: none;
+  span {
+    color: currentColor;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-transform: uppercase;
+  }
+  &.teal {
+    color: #2CFFC0;
+    @include rippleMixin(44, 255, 192);
+  }
+  &.blue {
+    color: #29A0DA;
+    @include rippleMixin(41, 160, 218);
+  }
+}
+
+.portfolio {
+  &-grid {
+    display: flex;
+  }
+  &-card {
+    &-content {
+      &-image {
+
+      }
+    }
+  }
+}

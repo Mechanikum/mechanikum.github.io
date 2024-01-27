@@ -1,0 +1,130 @@
+@import "reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+body {
+  background: #19140F;
+  color: #C2AC8F;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #C2AC8F;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), #19140F;
+}
+header p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  user-select: none;
+}
+header a {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+header .deco {
+  position: relative;
+}
+header a:hover {
+  text-decoration: underline;
+}
+header .deco {
+  margin: -8px -16px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  padding: 16px 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #C2AC8F;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), #19140F;
+}
+footer p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  user-select: none;
+}
+footer a {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+footer .deco {
+  position: relative;
+}
+
+.badge {
+  display: flex;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: currentColor;
+  color: #C2AC8F;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  cursor: pointer;
+  user-select: none;
+}
+.badge span {
+  color: currentColor;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+}
+.badge.teal {
+  color: #2CFFC0;
+  transition: background 0.5s ease-in-out;
+}
+.badge.teal:hover {
+  background: rgba(44, 255, 192, 0) radial-gradient(circle, rgba(44, 255, 192, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.teal:active {
+  background-color: rgba(44, 255, 192, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
+.badge.blue {
+  color: #29A0DA;
+  transition: background 0.5s ease-in-out;
+}
+.badge.blue:hover {
+  background: rgba(41, 160, 218, 0) radial-gradient(circle, rgba(41, 160, 218, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.blue:active {
+  background-color: rgba(41, 160, 218, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.portfolio-grid {
+  display: flex;
+}
+
+/*# sourceMappingURL=styles.css.map */
