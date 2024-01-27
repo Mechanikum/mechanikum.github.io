@@ -1,10 +1,45 @@
-@import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+div {
+  box-sizing: border-box;
+}
+
 body {
   background: #19140F;
   color: #C2AC8F;
   font-family: "Inter", sans-serif;
   min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+section {
+  margin-bottom: 120px;
 }
 
 header {
@@ -42,9 +77,10 @@ header .deco {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100vw;
+  margin-top: auto;
   padding: 16px 16px;
   box-sizing: border-box;
   display: flex;
@@ -122,9 +158,164 @@ footer .deco {
   background-size: 100%;
   transition: background 0s;
 }
+.badge.light-blue {
+  color: #2CCCFF;
+  transition: background 0.5s ease-in-out;
+}
+.badge.light-blue:hover {
+  background: rgba(44, 204, 255, 0) radial-gradient(circle, rgba(44, 204, 255, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.light-blue:active {
+  background-color: rgba(44, 204, 255, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
+.badge.orange {
+  color: #FFA836;
+  transition: background 0.5s ease-in-out;
+}
+.badge.orange:hover {
+  background: rgba(255, 168, 54, 0) radial-gradient(circle, rgba(255, 168, 54, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.orange:active {
+  background-color: rgba(255, 168, 54, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
+.badge.green {
+  color: #81FF1E;
+  transition: background 0.5s ease-in-out;
+}
+.badge.green:hover {
+  background: rgba(129, 255, 30, 0) radial-gradient(circle, rgba(129, 255, 30, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.green:active {
+  background-color: rgba(129, 255, 30, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
+.badge.yellow {
+  color: #FAE94A;
+  transition: background 0.5s ease-in-out;
+}
+.badge.yellow:hover {
+  background: rgba(250, 233, 74, 0) radial-gradient(circle, rgba(250, 233, 74, 0.1) 1%, transparent 1%) center/15000%;
+}
+.badge.yellow:active {
+  background-color: rgba(250, 233, 74, 0.25);
+  background-size: 100%;
+  transition: background 0s;
+}
 
 .portfolio-grid {
   display: flex;
+  width: 1680px;
+  margin: 24px auto 0;
+  flex-wrap: wrap;
+}
+.portfolio-card {
+  padding: 8px;
+  flex: 0 0 33.333333%;
+  width: 33.333333%;
+  box-sizing: border-box;
+}
+.portfolio-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 24px;
+  background: #302B27;
+  width: 100%;
+  height: 100%;
+  transition: box-shadow 0.1s ease-out;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+.portfolio-card-content:hover {
+  box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.portfolio-card-content__image {
+  height: fit-content;
+  align-self: stretch;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  flex-shrink: 0;
+  border-radius: 24px 24px 12px 12px;
+}
+.portfolio-card-content__image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  line-height: 10rem;
+  text-transform: uppercase;
+}
+.portfolio-card-content__image picture img {
+  max-width: 100%;
+  min-height: 100%;
+}
+.portfolio-card-content-body {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.portfolio-card-content-body__title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+}
+.portfolio-card-content-body__desc {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+}
+.portfolio-card-content-body__desc p + p, .portfolio-card-content-body__desc p + ul, .portfolio-card-content-body__desc p + ol {
+  margin-top: 0.5rem;
+}
+.portfolio-card-content-body__badges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gallery-grid-desktop {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  width: 66.66666%;
+}
+.gallery-grid-adaptive {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  width: 33.333333%;
+}
+.gallery-grid-item {
+  padding: 8px;
+  flex: 0 0 50%;
+  width: 50%;
+  height: fit-content;
+  box-sizing: border-box;
+}
+.gallery-grid-item picture {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #302B27;
+  width: 100%;
+  height: fit-content;
+  transition: box-shadow 0.1s ease-out;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+.gallery-grid-item picture:hover {
+  box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=styles.css.map */

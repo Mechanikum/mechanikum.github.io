@@ -1,4 +1,33 @@
-@import "reset.css";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+div {
+  box-sizing: border-box;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 $background: #19140F;
@@ -50,6 +79,12 @@ body {
   color: $font;
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+section {
+  margin-bottom: 120px;
 }
 
 header {
@@ -64,9 +99,10 @@ header {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100vw;
+  margin-top: auto;
   padding: 16px 16px;
   box-sizing: border-box;
   @include headerBlockMixin;
@@ -97,24 +133,143 @@ footer {
     text-transform: uppercase;
   }
   &.teal {
-    color: #2CFFC0;
+    color: #2CFFC0; //rgb(44, 255, 192)
     @include rippleMixin(44, 255, 192);
   }
   &.blue {
-    color: #29A0DA;
+    color: #29A0DA; //rgb(41, 160, 218)
     @include rippleMixin(41, 160, 218);
+  }
+  &.light-blue {
+    color: #2CCCFF; //rgb(44, 204, 255)
+    @include rippleMixin(44, 204, 255);
+  }
+  &.orange {
+    color: #FFA836; //rgb(255, 168, 54)
+    @include rippleMixin(255, 168, 54);
+  }
+  &.green {
+    color: #81FF1E; //rgb(129, 255, 30)
+    @include rippleMixin(129, 255, 30);
+  }
+  &.yellow {
+    color: #FAE94A; //rgb(250, 233, 74)
+    @include rippleMixin(250, 233, 74);
   }
 }
 
 .portfolio {
   &-grid {
     display: flex;
+    width: 1680px;
+    margin: 24px auto 0;
+    flex-wrap: wrap;
   }
   &-card {
+    padding: 8px;
+    flex: 0 0 33.333333%;
+    width: 33.333333%;
+    box-sizing: border-box;
     &-content {
-      &-image {
-
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 24px;
+      background: #302B27;
+      width: 100%;
+      height: 100%;
+      transition: box-shadow 0.1s ease-out;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      &:hover {
+        box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
+      }
+      &__image {
+        height: fit-content;
+        align-self: stretch;
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        flex-shrink: 0;
+        border-radius: 24px 24px 12px 12px;
+        picture {
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: rgba(255,255,255,0.05);
+          text-align: center;
+          line-height: 10rem;
+          text-transform: uppercase;
+          img {
+            max-width: 100%;
+            min-height: 100%;
+          }
+        }
+      }
+      &-body {
+        display: flex;
+        padding: 16px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        &__title {
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.32px;
+          text-transform: uppercase;
+        }
+        &__desc {
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: 0.32px;
+          p + p, p + ul, p + ol {
+            margin-top: 0.5rem
+          }
+        }
+        &__badges {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
       }
     }
+  }
+}
+
+.gallery-grid {
+  &-desktop {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 66.66666%;
+  }
+  &-adaptive {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.333333%;
+  }
+  &-item {
+    padding: 8px;
+    flex: 0 0 50%;
+    width: 50%;
+    height: fit-content;
+    box-sizing: border-box;
+    picture {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #302B27;
+      width: 100%;
+      height: fit-content;
+      transition: box-shadow 0.1s ease-out;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      &:hover {
+        box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
+      }
+    }
+
   }
 }

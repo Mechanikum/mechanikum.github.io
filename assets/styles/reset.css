@@ -23,3 +23,7 @@ a {
     color: unset;
     text-decoration: unset;
 }
+
+div {
+    box-sizing: border-box;
+}
