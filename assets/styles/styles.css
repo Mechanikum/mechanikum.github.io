@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+html {
+  font-size: 1em;
+}
+@media (orientation: portrait) {
+  html {
+    font-size: 2em;
+  }
+}
+
 body {
   background: #19140F;
   color: #C2AC8F;
@@ -23,7 +32,7 @@ header {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), #19140F;
 }
 header p {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -32,7 +41,7 @@ header p {
   user-select: none;
 }
 header a {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -45,7 +54,13 @@ header a:hover {
   text-decoration: underline;
 }
 header .deco {
-  margin: -8px -16px;
+  margin: -1rem -16px;
+  min-height: 1.75rem;
+}
+@media (orientation: portrait) {
+  header {
+    padding: 0 16px;
+  }
 }
 
 footer {
@@ -62,7 +77,7 @@ footer {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), #19140F;
 }
 footer p {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -71,7 +86,7 @@ footer p {
   user-select: none;
 }
 footer a {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -93,9 +108,9 @@ footer .deco {
 .badge {
   display: flex;
   padding: 4px 8px;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border-radius: 8px;
   border: 2px solid;
   border-color: currentColor;
@@ -106,9 +121,13 @@ footer .deco {
   cursor: pointer;
   user-select: none;
 }
+.badge img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
 .badge span {
   color: currentColor;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -269,27 +288,27 @@ footer .deco {
   padding: 16px;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
 }
 .portfolio-card-content-body__title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.32px;
   text-transform: uppercase;
 }
 .portfolio-card-content-body__desc {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.32px;
 }
 .portfolio-card-content-body__desc p + p, .portfolio-card-content-body__desc p + ul, .portfolio-card-content-body__desc p + ol {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 .portfolio-card-content-body__badges {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .gallery-grid-item {
