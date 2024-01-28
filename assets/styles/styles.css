@@ -1,34 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-a {
-  color: unset;
-  text-decoration: unset;
-}
-
-div {
-  box-sizing: border-box;
-}
-
 body {
   background: #19140F;
   color: #C2AC8F;
@@ -36,6 +6,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-flow: column;
+  position: relative;
 }
 
 section {
@@ -44,6 +15,7 @@ section {
 
 header {
   padding: 8px 16px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -107,6 +79,15 @@ footer a {
 }
 footer .deco {
   position: relative;
+}
+@media (max-width: 1280px) {
+  footer {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer p {
+    flex-basis: 100%;
+  }
 }
 
 .badge {
@@ -209,15 +190,42 @@ footer .deco {
 
 .portfolio-grid {
   display: flex;
-  width: 1680px;
+  max-width: 1680px;
+  width: 100%;
   margin: 24px auto 0;
   flex-wrap: wrap;
+}
+@media (max-width: 1280px) {
+  .portfolio-grid {
+    padding: 0 12px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-grid {
+    flex-flow: column;
+  }
 }
 .portfolio-card {
   padding: 8px;
   flex: 0 0 33.333333%;
   width: 33.333333%;
   box-sizing: border-box;
+}
+@media (max-width: 1280px) {
+  .portfolio-card {
+    flex-basis: 50%;
+    width: 50%;
+  }
+  .portfolio-card:last-child .portfolio-card:first-child {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-card {
+    flex-basis: 100%;
+    width: 100%;
+  }
 }
 .portfolio-card-content {
   display: flex;
@@ -226,7 +234,7 @@ footer .deco {
   border-radius: 24px;
   background: #302B27;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   transition: box-shadow 0.1s ease-out;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
@@ -279,22 +287,11 @@ footer .deco {
 }
 .portfolio-card-content-body__badges {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 16px;
 }
 
-.gallery-grid-desktop {
-  height: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-  width: 66.66666%;
-}
-.gallery-grid-adaptive {
-  height: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-  width: 33.333333%;
-}
 .gallery-grid-item {
   padding: 8px;
   flex: 0 0 50%;
@@ -313,9 +310,51 @@ footer .deco {
   height: fit-content;
   transition: box-shadow 0.1s ease-out;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  text-align: center;
+}
+.gallery-grid-item picture img {
+  width: 100%;
 }
 .gallery-grid-item picture:hover {
   box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.gallery-grid-desktop {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  width: 66.66666%;
+}
+@media (max-width: 1280px) {
+  .gallery-grid-desktop {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-grid-desktop .gallery-grid-item {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
+.gallery-grid-adaptive {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  width: 33.333333%;
+}
+@media (max-width: 1280px) {
+  .gallery-grid-adaptive {
+    width: 100%;
+  }
+  .gallery-grid-adaptive .gallery-grid-item {
+    flex-basis: 33.333333%;
+    width: 33.333333%;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-grid-adaptive .gallery-grid-item {
+    flex-basis: 50%;
+    width: 50%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

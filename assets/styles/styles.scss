@@ -1,33 +1,3 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-a {
-  color: unset;
-  text-decoration: unset;
-}
-
-div {
-  box-sizing: border-box;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 $background: #19140F;
@@ -81,6 +51,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-flow: column;
+  position: relative;
 }
 
 section {
@@ -89,6 +60,7 @@ section {
 
 header {
   padding: 8px 16px;
+  overflow: hidden;
   @include headerBlockMixin;
   a:hover {
     text-decoration: underline;
@@ -106,6 +78,13 @@ footer {
   padding: 16px 16px;
   box-sizing: border-box;
   @include headerBlockMixin;
+  @media (max-width:1280px) {
+    p {
+      flex-basis: 100%;
+    }
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 .badge {
@@ -161,15 +140,34 @@ footer {
 .portfolio {
   &-grid {
     display: flex;
-    width: 1680px;
+    max-width: 1680px;
+    width: 100%;
     margin: 24px auto 0;
     flex-wrap: wrap;
+    @media (max-width:1280px) {
+      padding: 0 12px;
+    }
+    @media (max-width:600px) {
+      flex-flow: column;
+    }
   }
   &-card {
     padding: 8px;
     flex: 0 0 33.333333%;
     width: 33.333333%;
     box-sizing: border-box;
+    @media (max-width:1280px) {
+      flex-basis: 50%;
+      width: 50%;
+      &:last-child &:first-child {
+        flex-basis: 100%;
+        width: 100%;
+      }
+    }
+    @media (max-width:600px) {
+      flex-basis: 100%;
+      width: 100%;
+    }
     &-content {
       display: flex;
       flex-direction: column;
@@ -177,7 +175,7 @@ footer {
       border-radius: 24px;
       background: #302B27;
       width: 100%;
-      height: 100%;
+      height:fit-content;
       transition: box-shadow 0.1s ease-out;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
       &:hover {
@@ -228,6 +226,7 @@ footer {
         }
         &__badges {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           gap: 16px;
         }
@@ -237,18 +236,6 @@ footer {
 }
 
 .gallery-grid {
-  &-desktop {
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    width: 66.66666%;
-  }
-  &-adaptive {
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    width: 33.333333%;
-  }
   &-item {
     padding: 8px;
     flex: 0 0 50%;
@@ -266,10 +253,47 @@ footer {
       height: fit-content;
       transition: box-shadow 0.1s ease-out;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      text-align: center;
+      img {
+        width: 100%;
+      }
       &:hover {
         box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.15);
       }
     }
-
+  }
+  &-desktop {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 66.66666%;
+    @media (max-width:1280px) {
+      width: 100%;
+    }
+    @media (max-width:600px) {
+      .gallery-grid-item {
+        flex-basis: 100%;
+        width: 100%;
+      }
+    }
+  }
+  &-adaptive {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.333333%;
+    @media (max-width:1280px) {
+      width: 100%;
+      .gallery-grid-item {
+        flex-basis: 33.333333%;
+        width: 33.333333%;
+      }
+    }
+    @media (max-width:600px) {
+      .gallery-grid-item {
+        flex-basis: 50%;
+        width: 50%;
+      }
+    }
   }
 }
