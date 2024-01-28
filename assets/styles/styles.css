@@ -80,7 +80,7 @@ footer a {
 footer .deco {
   position: relative;
 }
-@media only screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   footer {
     flex-wrap: wrap;
     gap: 16px;
@@ -195,12 +195,12 @@ footer .deco {
   margin: 24px auto 0;
   flex-wrap: wrap;
 }
-@media only screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .portfolio-grid {
     padding: 0 12px;
   }
 }
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .portfolio-grid {
     flex-flow: column;
   }
@@ -211,7 +211,7 @@ footer .deco {
   width: 33.333333%;
   box-sizing: border-box;
 }
-@media only screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .portfolio-card {
     flex-basis: 50%;
     width: 50%;
@@ -221,7 +221,7 @@ footer .deco {
     width: 100%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .portfolio-card {
     flex-basis: 100%;
     width: 100%;
@@ -324,12 +324,12 @@ footer .deco {
   flex-wrap: wrap;
   width: 66.66666%;
 }
-@media only screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .gallery-grid-desktop {
     width: 100%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .gallery-grid-desktop .gallery-grid-item {
     flex-basis: 100%;
     width: 100%;
@@ -341,7 +341,7 @@ footer .deco {
   flex-wrap: wrap;
   width: 33.333333%;
 }
-@media only screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .gallery-grid-adaptive {
     width: 100%;
   }
@@ -350,7 +350,7 @@ footer .deco {
     width: 33.333333%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .gallery-grid-adaptive .gallery-grid-item {
     flex-basis: 50%;
     width: 50%;
