@@ -45,9 +45,6 @@ $font: #C2AC8F;
 
 html {
   font-size: 1em;
-  @media (max-width:600px)  {
-    font-size: 2em;
-  }
 }
 
 body {
@@ -74,6 +71,9 @@ header {
   .deco {
     margin: -1rem -16px;
     min-height: 1.75rem;
+    @media (max-width:600px)  {
+      height: 2rem;
+    }
   }
   @media (max-width:600px)  {
     padding: 0 16px;

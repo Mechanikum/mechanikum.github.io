@@ -2,11 +2,6 @@
 html {
   font-size: 1em;
 }
-@media (max-width: 600px) {
-  html {
-    font-size: 2em;
-  }
-}
 
 body {
   background: #19140F;
@@ -56,6 +51,11 @@ header a:hover {
 header .deco {
   margin: -1rem -16px;
   min-height: 1.75rem;
+}
+@media (max-width: 600px) {
+  header .deco {
+    height: 2rem;
+  }
 }
 @media (max-width: 600px) {
   header {
