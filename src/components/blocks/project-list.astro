@@ -1,0 +1,29 @@
+---
+import {Image} from 'astro:assets';
+import {CardTitle, CardFooter} from "../ui/card";
+import {getCollection} from "astro:content";
+import Tags from "@/components/blocks/tags"
+import {getImage} from "@/lib/projects-loader";
+
+const projects = await getCollection('projects');
+const banners = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/banner.*')
+---
+
+<div class="grid md:grid-cols-2 xl:grid-cols-3 justify-center container gap-4 py-6">
+	{projects.map((project) =>
+            <a data-slot="card"
+               class={"group bg-card text-card-foreground flex flex-col gap-6 rounded-xl border pb-6 shadow-sm"}
+               href={project.id}
+               data-astro-prefetch
+            >
+                <Image src={getImage(banners, project.id)()} width={500} height={260}
+                       class="object-cover object-center aspect-[16/9] rounded-t-xl" alt="A description of my image."/>
+                <CardFooter className="flex-col gap-1.5 items-start">
+                    <CardTitle className={"text-xl md:text-lg"}>{project.data.name}</CardTitle>
+                    <div class="flex gap-2">
+                        <Tags tags={project.data.tags}/>
+                    </div>
+                </CardFooter>
+            </a>
+	)}
+</div>

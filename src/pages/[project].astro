@@ -1,0 +1,83 @@
+---
+import {getCollection, render} from 'astro:content';
+import Main from "@/layouts/main.astro";
+import {Card, CardTitle, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
+import {getImage, Image} from "astro:assets";
+import {FullscreenView} from '@/components/blocks/fullscreen-view';
+import Tags from "../components/blocks/tags";
+import {getGallery} from "../lib/projects-loader";
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map(project => ({
+		params: {project: project.id.split('/')[0]},
+		props: {project}
+	}));
+}
+
+const {project} = Astro.props;
+const props = project.data
+
+const {Content} = await render(project);
+
+const desktopRaw = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/gallery/*')
+const adaptiveRaw = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/adaptive/*')
+
+const desktop = getGallery(desktopRaw, project.id)
+const adaptive = getGallery(adaptiveRaw, project.id)
+
+const getFullscreenGallery = async () => {
+	const list = []
+
+	for (let i = 0; i < desktop.length; i++) {
+		const t = await desktop[i]()
+		const image = await getImage({src: t.default, format: 'webp'})
+
+		list.push([`desktop-${i}`, image])
+	}
+	for (let i = 0; i < adaptive.length; i++) {
+		const t = await adaptive[i]()
+		const image = await getImage({src: t.default, format: 'webp'})
+
+		list.push([`adaptive-${i}`, image])
+	}
+
+	return Object.fromEntries(list)
+}
+
+const gallery = await getFullscreenGallery()
+---
+
+<Main title={`Mechanikum's portfolio - ${props.name}`}>
+    <section class="container mx-auto py-6 pb-12 space-y-6">
+		<div class="flex flex-wrap gap-4 justify-between">
+            <Card className='max-w-lg gap-2.5'>
+                <CardHeader>
+                    <CardTitle>{props.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-balance space-y-1.5">
+                    <Content/>
+                </CardContent>
+                <CardFooter></CardFooter>
+            </Card>
+            <div class="flex gap-2 h-fit max-w-xs">
+                <Tags tags={props.tags}/>
+            </div>
+		</div>
+        <div class="flex flex-col lg:flex-row gap-4">
+            <div class="flex-[2/3_1_0] sm:columns-2 space-y-4 gap-4 auto-rows-min">
+				{desktop.map((item, index) =>
+                        <Image src={item()} width={600} data-image-id={`desktop-${index}`} alt=""
+                               class="rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
+				)}
+            </div>
+            <div class="flex-[1/3_1_0] columns-2 md:columns-3 lg:columns-2 space-y-4 gap-4 auto-rows-min">
+				{adaptive.map((item, index) =>
+                        <Image src={item()} width={300} data-image-id={`adaptive-${index}`} alt=""
+                               class="mx-auto lg:mx-0 rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
+				)}
+            </div>
+        </div>
+    </section>
+    <FullscreenView gallery={gallery} client:only="react"/>
+</Main>
