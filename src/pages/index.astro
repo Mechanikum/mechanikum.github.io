@@ -1,0 +1,13 @@
+---
+import Main from "@/layouts/main.astro";
+import ProjectList from "@/components/blocks/project-list.astro"
+import {Image} from "astro:assets";
+import bottomCorner from '../assets/svg/bottom-corner.svg';
+---
+
+<Main>
+    <Image src={bottomCorner} alt="bridge" class={"absolute w-[max(20vw,320px)] -z-1 bottom-0 left-0"} loading="eager"/>
+    <div class="grid place-items-center content-center">
+        <ProjectList/>
+    </div>
+</Main>

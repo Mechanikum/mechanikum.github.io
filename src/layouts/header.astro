@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import topCorner from '../assets/svg/top-corner.svg';
+import bridge from '../assets/svg/bridge.svg';
+---
+
+<header class="flex gap-6 items-center bg-muted">
+	<a href="/" class="flex gap-4 items-center">
+        <Image src={topCorner} alt="Logo" width={45} height={45} loading="eager"/>
+        <p class="text-xl sm:text-2xl uppercase font-bold tracking-widest">Mechanikum</p>
+	</a>
+    <a class="hover:underline text-lg font-semibold" href="/">Portfolio</a>
+    <Image src={bridge} alt="bridge" class={"hidden sm:block ml-auto mr-12"} loading="eager"/>
+</header>

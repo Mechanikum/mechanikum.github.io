@@ -1,0 +1,25 @@
+---
+import {Mail, Send} from "lucide-react";
+import {badgeVariants} from "../components/ui/badge";
+import {cn} from "../lib/utils";
+
+const badgeStyles = cn(badgeVariants({variant: "outline"}), "p-2 [&>svg]:size-4 [&>svg]:mr-0.5 transition-colors border-1 tracking-wide")
+---
+
+<footer class="flex flex-wrap gap-x-6 gap-y-2 mt-auto bg-muted py-4 px-6 items-center relative">
+    <p class="text-lg font-bold tracking-wider uppercase">Contact me:</p>
+	<div class="flex flex-wrap gap-2">
+        <a class={cn(badgeStyles, "bg-green-700/20 [a&]:hover:bg-green-600/25  text-green-400 [a&]:hover:text-green-300 border-green-600 [a&]:hover:border-green-500 ")}
+           href="mailto:grigoriybellyakov@gmail.com"
+        >
+            <Mail/>
+            <span>grigoriybellyakov@gmail.com</span>
+        </a>
+        <a class={cn(badgeStyles, "bg-sky-700/20 [a&]:hover:bg-sky-600/25  text-sky-300 [a&]:hover:text-sky-200 border-sky-600 [a&]:hover:border-sky-500 ")}
+           href="https://t.me/Mechanikum" target=”_blank”
+        >
+            <Send/>
+            <span>@Mechanikum</span>
+        </a>
+	</div>
+</footer>
