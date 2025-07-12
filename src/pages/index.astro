@@ -3,11 +3,28 @@ import Main from "@/layouts/main.astro";
 import ProjectList from "@/components/blocks/project-list.astro"
 import {Image} from "astro:assets";
 import bottomCorner from '../assets/svg/bottom-corner.svg';
+import About from "@/assets/about.md"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import SkillsMasonry from '@/components/blocks/skills-masonry.astro';
+import { Wrench } from "lucide-react";
 ---
 
 <Main>
     <Image src={bottomCorner} alt="bridge" class={"absolute w-[max(20vw,320px)] -z-1 bottom-0 left-0"} loading="eager"/>
-    <div class="grid place-items-center content-center">
+    <div class="container grid  md:grid-cols-2 xl:grid-cols-3 justify-center gap-4 py-6 mx-auto">
+        <Card className="gap-2.5 h-fit col-span-full xl:col-span-1 md:row-span-3">
+			<CardHeader className="text-lg font-bold">About me</CardHeader>
+			<CardContent className="space-y-2 [&>ul]:space-y-1.5 [&>ul]:pl-[1rem] [&>ul]:leading-tight">
+                <About/>
+			</CardContent>
+			<CardFooter className="block space-y-1.5">
+				<p>Technologies I've worked with:</p>
+                <SkillsMasonry/>
+			</CardFooter>
+        </Card>
+		<div class="md:col-span-2 p-1.5 flex gap-3 justify-center items-center select-none bg-yellow-600/30 rounded-lg border-yellow-500/80 border-2 text-yellow-500 tracking-widest">
+			<Wrench/> <p>I'm currently adding more of the projects I worked on to the list. Please stand by.</p>
+		</div>
         <ProjectList/>
     </div>
 </Main>

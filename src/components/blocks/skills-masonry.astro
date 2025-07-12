@@ -1,0 +1,39 @@
+---
+const data = {
+	"JS Frameworks": [
+		"Vue",
+		"React",
+		"Astro"
+	],
+	"UI Libraries": [
+		"Vuetify",
+		"MUI",
+		"shadcn/ui"
+	],
+	"CSS Frameworks": ["SCSS", "Tailwind"],
+	"Templating Engines": ["Twig", "Nunjucks"],
+	"DevOps": ["Git", "Docker Compose", "Nginx"],
+	"Software": [
+		"Figma",
+		"Adobe Illustrator",
+		"Adobe After Effects",
+		"Adobe Audition"
+	],
+	"Programming Languages": ["JavaScript", "TypeScript", "Python", "PHP"],
+};
+---
+
+<div class="grid grid-cols-2 gap-0">
+	{Object.entries(data).map(([category, items]) => (
+            <div class="border py-2 px-4 space-y-0.5 last:col-span-full">
+                <p class="text-muted-foreground tracking-wider font-medium">{category}</p>
+                <ul class="pl-[1.5rem] text-sm list-disc">
+					{items.map((item) => (
+                            <li>
+								{item}
+                            </li>
+					))}
+                </ul>
+            </div>
+	))}
+</div>
