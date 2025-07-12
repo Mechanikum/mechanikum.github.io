@@ -9,9 +9,7 @@ import {
 import {Loader2} from "lucide-react";
 import type {GetImageResult} from "astro";
 
-export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> }> = ({
-																						  gallery,
-																					  }) => {
+export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> }> = ({gallery}) => {
 	const [open, setOpen] = useState(false);
 	const [currentId, setCurrentId] = useState<string | null>(null);
 	const [loaded, setLoaded] = useState(false);
@@ -38,7 +36,7 @@ export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> 
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogContent
-				className="p-0 gap-0 bg-muted/30 backdrop-blur-sm text-black w-max h-max flex justify-center"
+				className="p-0 gap-0 bg-muted/30 backdrop-blur-sm text-neutral-500 w-max h-max flex justify-center"
 				style={{
 					maxWidth: `min(95vw, ${image.attributes.width}px)`,
 					maxHeight: `min(90vh, ${image.attributes.height}px)`,
@@ -50,7 +48,7 @@ export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> 
 						<div
 							className="absolute inset-0 flex items-center justify-center text-foreground"
 						>
-							<Loader2 className="size-6 animate-spin"/>
+							<Loader2 className="size-12 animate-spin"/>
 						</div>
 					)}
 

@@ -6,7 +6,8 @@ const projects = defineCollection({
 	loader: projectsLoader(),
 	schema: z.object({
 		name: z.string(),
-		tags: z.array(z.string())
+		tags: z.array(z.string()),
+		date: z.coerce.date()
 	})
 });
 

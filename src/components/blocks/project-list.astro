@@ -9,7 +9,7 @@ const projects = await getCollection('projects');
 const banners = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/banner.*')
 ---
 
-{projects.map((project) =>
+{projects.sort((a, b)=> b.data.date.getTime() - a.data.date.getTime() ).map((project) =>
 <a data-slot="card"
    class={"group bg-card text-card-foreground flex flex-col gap-6 rounded-xl border pb-6 shadow-sm"}
    href={project.id}

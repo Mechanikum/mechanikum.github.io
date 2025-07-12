@@ -6,6 +6,7 @@ import bottomCorner from '../assets/svg/bottom-corner.svg';
 import About from "@/assets/about.md"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import SkillsMasonry from '@/components/blocks/skills-masonry.astro';
+import { Wrench } from "lucide-react";
 ---
 
 <Main>
@@ -21,6 +22,9 @@ import SkillsMasonry from '@/components/blocks/skills-masonry.astro';
                 <SkillsMasonry/>
 			</CardFooter>
         </Card>
+		<div class="md:col-span-2 p-1.5 flex gap-3 justify-center items-center select-none bg-yellow-600/30 rounded-lg border-yellow-500/80 border-2 text-yellow-500 tracking-widest">
+			<Wrench/> <p>I'm currently adding more of the projects I worked on to the list. Please stand by.</p>
+		</div>
         <ProjectList/>
     </div>
 </Main>
