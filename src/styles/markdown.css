@@ -1,0 +1,122 @@
+.markdown h1 {
+    font-size: 1.8rem;
+    line-height: 1.65rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown h2 {
+    font-size: 1.6rem;
+    line-height: 1.45rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown h3 {
+    font-size: 1.2rem;
+    line-height: 1.35rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown h4 {
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown h5 {
+    font-size: 1.1rem;
+    line-height: 1.15rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown h6 {
+    font-size: 1rem;
+    line-height: 1.05rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown code {
+    white-space: break-spaces;
+    display: inline;
+    width: 100%;
+    background: var(--card);
+    border-radius: 1px;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem 0;
+}
+
+.markdown blockquote {
+    white-space: break-spaces;
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: 0.25rem 0;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    height: fit-content;
+    line-height: 1.2rem;
+    border-radius: 4px 12px 12px 4px;
+    background:var(--card);
+}
+
+.markdown blockquote:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: var(--muted);
+    border-radius: 1px;
+    height: calc(100% - 12px);
+    width: 3px;
+}
+
+.markdown ul, .markdown ol {
+    display: inline-block;
+    line-height: 0.85rem;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.markdown ul li {
+    display: list-item;
+    line-height: 1.1rem;
+    list-style: initial;
+}
+
+.markdown ol li {
+    display: list-item;
+    line-height: 1.1rem;
+    list-style: decimal;
+}
+
+.markdown ul li + li, .markdown ol li + li {
+    margin-top: 0.25rem
+}
+
+.markdown a {
+    color: var(--primary);
+    word-break: break-word;
+}
+
+.markdown a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.markdown img {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 20vh;
+    border-radius: 4px;
+}

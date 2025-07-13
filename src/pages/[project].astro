@@ -5,7 +5,8 @@ import {Card, CardTitle, CardContent, CardFooter, CardHeader} from "@/components
 import {getImage, Image} from "astro:assets";
 import {FullscreenView} from '@/components/blocks/fullscreen-view';
 import Tags from "../components/blocks/tags";
-import {getGallery} from "../lib/projects-loader";
+
+import {getImports} from "../lib/import-helpers";
 
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
@@ -23,21 +24,21 @@ const {Content} = await render(project);
 const desktopRaw = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/gallery/*')
 const adaptiveRaw = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*/adaptive/*')
 
-const desktop = getGallery(desktopRaw, project.id)
-const adaptive = getGallery(adaptiveRaw, project.id)
+const desktop = getImports(desktopRaw, project.id)
+const adaptive = getImports(adaptiveRaw, project.id)
 
 const getFullscreenGallery = async () => {
 	const list = []
 
 	for (let i = 0; i < desktop.length; i++) {
-		const t = await desktop[i]()
-		const image = await getImage({src: t.default, format: 'webp'})
+		const raw = await desktop[i]()
+		const image = await getImage({src: raw.default, format: 'webp'})
 
 		list.push([`desktop-${i}`, image])
 	}
 	for (let i = 0; i < adaptive.length; i++) {
-		const t = await adaptive[i]()
-		const image = await getImage({src: t.default, format: 'webp'})
+		const raw = await adaptive[i]()
+		const image = await getImage({src: raw.default, format: 'webp'})
 
 		list.push([`adaptive-${i}`, image])
 	}
@@ -64,25 +65,41 @@ const gallery = await getFullscreenGallery()
                 <Tags tags={props.tags}/>
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row gap-4">
-			{!!desktop.length &&
+		{!!desktop.length && !!adaptive.length ?
+                <div class="flex flex-col lg:flex-row gap-4">
                     <div class="flex-[2/3_1_0] sm:columns-2 space-y-4 gap-4 auto-rows-min">
-
 						{desktop.map((item, index) =>
                                 <Image src={item()} width={600} data-image-id={`desktop-${index}`} alt=""
                                        class="rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
 						)}
                     </div>
-			}
-			{!!adaptive.length &&
                     <div class="flex-[1/3_1_0] columns-2 md:columns-3 lg:columns-2 space-y-4 gap-4 auto-rows-min">
 						{adaptive.map((item, index) =>
                                 <Image src={item()} width={300} data-image-id={`adaptive-${index}`} alt=""
                                        class="mx-auto lg:mx-0 rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
 						)}
                     </div>
-			}
-        </div>
+                </div>
+			:
+                <>
+					{!!desktop.length &&
+                            <div class="sm:columns-2 gap-4 space-y-4">
+								{desktop.map((item, index) =>
+                                        <Image src={item()} width={900} data-image-id={`desktop-${index}`} alt=""
+                                               class="rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
+								)}
+                            </div>
+					}
+					{!!adaptive.length &&
+                            <div class="columns-2 md:columns-3 gap-4 space-y-4">
+								{adaptive.map((item, index) =>
+                                        <Image src={item()} width={900} data-image-id={`desktop-${index}`} alt=""
+                                               class="rounded-2xl hover:scale-103 cursor-pointer duration-400 delay-100 hover:z-1 transition-transform"/>
+								)}
+                            </div>
+					}
+                </>
+		}
     </section>
     <FullscreenView gallery={gallery} client:only="react"/>
 </Main>

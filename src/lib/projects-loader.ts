@@ -44,11 +44,3 @@ export function projectsLoader(): Loader {
 	};
 }
 
-export const getImage = <T>(obj: Record<string, T>, slug: string) => (Object.entries(obj)
-	.find(([p]) => p.includes(`/${slug}/`))?.[1] as any)
-
-export const getGallery = <T>(obj: Record<string, T>, slug: string) => Object.entries(obj)
-	.map(([p, value]) => {
-		if (p.includes(`/${slug}/`)) return (value as any)
-	})
-	.filter(v => v != undefined)

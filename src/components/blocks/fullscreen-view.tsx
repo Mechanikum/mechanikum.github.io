@@ -14,7 +14,6 @@ export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> 
 	const [currentId, setCurrentId] = useState<string | null>(null);
 	const [loaded, setLoaded] = useState(false);
 
-	// global click handler
 	useEffect(() => {
 		const handler = (e: MouseEvent) => {
 			const el = (e.target as HTMLElement).closest("[data-image-id]") as HTMLElement | null;
@@ -27,7 +26,6 @@ export const FullscreenView: React.FC<{ gallery: Record<string, GetImageResult> 
 		return () => document.removeEventListener("click", handler);
 	}, []);
 
-	// show loader every time image changes
 	useEffect(() => setLoaded(false), [currentId]);
 
 	if (!currentId) return null;
