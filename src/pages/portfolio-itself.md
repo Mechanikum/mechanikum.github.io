@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Main.astro
+layout: /src/layouts/Main.astro
 title: Portfolio itself
 ---
 <div class="max-w-3xl w-full mx-auto px-6 py-2 markdown space-y-1.5 balance rounded-lg my-6 bg-neutral-900 
