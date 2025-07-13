@@ -1,9 +1,6 @@
 ---
-layout: "@/layouts/Main.astro"
 title: Portfolio itself
 ---
-<div class="max-w-3xl w-full mx-auto px-6 py-2 markdown space-y-1.5 balance rounded-lg my-6 bg-neutral-900 
-text-neutral-300/75">
 
 # Portfolio itself
 
@@ -68,5 +65,3 @@ Nice and simple.
 ## Conclusion
 
 In two days, I essentially built a blog-like system that generates pages from a folder structure. Sure, there are areas to improve and a couple of refactors wouldn’t hurt, but overall it was a breeze. Populating the portfolio with content is no longer a chore—so it’s a win-win: I got deeper into how Astro works, and made my life easier.
-
-</div>
