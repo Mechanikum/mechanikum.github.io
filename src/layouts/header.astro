@@ -4,12 +4,14 @@ import topCorner from '../assets/svg/top-corner.svg';
 import bridge from '../assets/svg/bridge.svg';
 ---
 
-<header class="flex gap-6 items-center bg-muted">
+<header class="flex gap-x-6 items-center flex-wrap  md:flex-nowrap bg-muted">
 	<a href="/" class="flex gap-4 items-center">
         <Image src={topCorner} alt="Logo" width={45} height={45} loading="eager"/>
         <p class="text-xl sm:text-2xl uppercase font-bold tracking-widest">Mechanikum</p>
 	</a>
-    <a class="hover:underline text-lg font-semibold" href="/">Portfolio</a>
-    <a class="hover:underline text-lg font-semibold" href="/portfolio-itself">How it was made</a>
-    <Image src={bridge} alt="bridge" class={"hidden sm:block ml-auto mr-12"} loading="eager"/>
+	<div class="flex gap-4 items-center px-4 py-3 text-nowrap">
+        <a class="hover:underline text-lg font-semibold" href="/">Portfolio</a>
+        <a class="hover:underline text-lg font-semibold" href="/portfolio-itself">How it was made</a>
+	</div>
+    <Image src={bridge} alt="bridge" class={"hidden md:block ml-auto mr-2 lg:mr-12"} loading="eager"/>
 </header>
